@@ -1,9 +1,11 @@
+#ifndef board_h
+#define board_h
+#include"stone.h"
 class Board
 {
 public:
 	int board_size, start_cursor_x, start_cursor_y;
-	char* plane;
-	//char** ptr_plane;
+	Stone *plane;
 
 	Board(int, int, int);
 	Board();
@@ -14,3 +16,4 @@ public:
 	void ChangeSize();
 
 };
+#endif

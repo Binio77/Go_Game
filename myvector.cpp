@@ -28,6 +28,12 @@ void MyVector<T>::PushBack(T element)
 	myvector = (T*)realloc(myvector, vector_size * sizeof(MyVector));
 	*(myvector + vector_size - 1) = element;
 }
+template<typename T>
+void MyVector<T>::ChangeSize(int size)
+{
+	vector_size = size;
+	myvector = (T*)realloc(myvector, vector_size * sizeof(MyVector));
+}
 
 
 

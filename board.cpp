@@ -6,6 +6,7 @@
 #include<cstdbool>;
 
 
+
 Board::~Board()
 {
 	delete(plane);
@@ -13,10 +14,9 @@ Board::~Board()
 
 Board::Board(int _board_size, int _start_cursorx, int _start_cursor_y) : board_size(_board_size), start_cursor_x(_start_cursorx), start_cursor_y(_start_cursor_y)
 {
-	plane = (char*)(board_size * board_size * sizeof(char));
-	//plane = new char(board_size * board_size);
-	//ptr_plane = &plane;
+	plane = (Stone*)malloc(board_size * board_size * sizeof(Stone));
 }
+
 
 Board::Board() : board_size(0), start_cursor_x(0), start_cursor_y(0) {};
 
@@ -26,7 +26,7 @@ void Board::FillBoard()
 	{
 		for (int x = 0; x < board_size; x++)
 		{
-			*(plane + y * board_size + x) = '+';
+			(plane + y * board_size + x)->stone_is_here = false;
 		}
 	}
 	
@@ -51,7 +51,11 @@ void Board::DisplayBoard()
 		cputs("| ");
 		for (int x = 0; x < board_size; x++)
 		{
-			putch(*(plane + y * board_size + x));
+			if ((plane + y * board_size + x)->stone_is_here == false)
+				putch('+');
+			else
+				putch('%');
+
 			putch(' ');
 
 		}
@@ -73,7 +77,7 @@ void Board::DisplayBoard()
 
 void Board::ChangeSize()
 {
-	plane = (char*)realloc(plane, board_size * board_size * sizeof(plane));
+	plane = (Stone*)realloc(plane, board_size * board_size * sizeof(Stone));
 
 }
 

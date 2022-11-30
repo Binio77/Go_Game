@@ -1,3 +1,5 @@
+#ifndef mystring_h
+#define mystring_h
 class MyString
 {
 public:
@@ -13,3 +15,5 @@ public:
 };
 
 void ReverseMyString(MyString);
+
+#endif

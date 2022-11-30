@@ -19,6 +19,7 @@ int main() {
 		board_x_location = 0, board_y_location = 0;
 	char txt[32];
 	bool board_was_once_drown = false, new_game = false, next_round = false;
+
 	Board board(board_size, board_x_location, board_y_location);
 	//static Board board(board_size, map_x_location, map_y_location);
 	// if the program is compiled in pure C, then we need to initialize
@@ -93,7 +94,6 @@ int main() {
 		gotoxy(x, y);
 		putch('*');
 		
-		//printf("%i %i", map_x_location, map_y_location);
 		
 
 		// we wait for key press and get its code

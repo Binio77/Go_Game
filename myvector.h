@@ -1,3 +1,5 @@
+#ifndef myvector_h
+#define myvector_h
 template <typename T>
 class MyVector
 {
@@ -9,6 +11,8 @@ public:
 	virtual ~MyVector();
 	void PushBack(T);
 	void Delete(int);
+	void ChangeSize(int);
 
 
 };
+#endif

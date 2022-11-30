@@ -7,7 +7,7 @@
 #include<stdlib.h>
 
 
-MyString::MyString() :my_string_size(0), size_bef_add(0) {};
+MyString::MyString() :my_string_size(0), size_bef_add(0), mystring(NULL) {};
 
 MyString::MyString(int _my_string_size) :my_string_size(_my_string_size)
 {
@@ -23,7 +23,7 @@ void MyString::AddElements(char* word) {
 	
 	int word_size = sizeof(word) / sizeof(char);
 	my_string_size += word_size;
-	mystring = (char*)realloc(mystring, my_string_size * sizeof(mystring));
+	mystring = (char*)realloc(mystring, my_string_size * sizeof(MyString));
 
 	for (int i = 0; i < word_size; i++)
 	{
@@ -36,7 +36,7 @@ void MyString::AddElements(char* word) {
 void MyString::AddLetter(char letter)
 {
 	my_string_size++;
-	mystring = (char*)realloc(mystring, my_string_size * sizeof(mystring));
+	mystring = (char*)realloc(mystring, my_string_size * sizeof(MyString));
 	*(mystring + my_string_size - 1) = letter;
 	size_bef_add++;
 

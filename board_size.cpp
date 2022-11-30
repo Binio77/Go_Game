@@ -46,11 +46,11 @@ int ChooseBoardSize(int _legend_x, int _legend_y) {
 		gotoxy(_legend_x, _legend_y++);
 		do {
 			current_char_digit = getche();
-			if (current_char_digit >= '1' && current_char_digit <= '9')
+			if (current_char_digit >= '0' && current_char_digit <= '9')
 			{
 				number_string.AddLetter(current_char_digit);
 			}
-		} while (current_char_digit >= '1' && current_char_digit <= '9');
+		} while (current_char_digit >= '0' && current_char_digit <= '9');
 		
 		for (int i = number_string.my_string_size - 1; i >= 0; i--)
 		{
