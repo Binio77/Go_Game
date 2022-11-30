@@ -1,1 +1,1 @@
-int ChooseBoardSize();
+int ChooseBoardSize(int, int);

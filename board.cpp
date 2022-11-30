@@ -1,9 +1,24 @@
-#define _CRT_SECURE_NO_WARNINGS
+#include"board.h"
+#include"stone.h"
+#include"conio2.h"
 #include<stdio.h>
 #include<stdlib.h>
-#include"conio2.h"
 #include<cstdbool>;
-#include"board.h"
+
+
+Board::~Board()
+{
+	delete(plane);
+}
+
+Board::Board(int _board_size, int _start_cursorx, int _start_cursor_y) : board_size(_board_size), start_cursor_x(_start_cursorx), start_cursor_y(_start_cursor_y)
+{
+	plane = (char*)(board_size * board_size * sizeof(char));
+	//plane = new char(board_size * board_size);
+	//ptr_plane = &plane;
+}
+
+Board::Board() : board_size(0), start_cursor_x(0), start_cursor_y(0) {};
 
 void Board::FillBoard()
 {
@@ -59,6 +74,7 @@ void Board::DisplayBoard()
 void Board::ChangeSize()
 {
 	plane = (char*)realloc(plane, board_size * board_size * sizeof(plane));
+
 }
 
 void Board::Draw(int _board_size, int _start_cursorx_location, int _start_cursory_location)
@@ -71,16 +87,3 @@ void Board::Draw(int _board_size, int _start_cursorx_location, int _start_cursor
 	DisplayBoard();
 }
 
-void Board::Delete()
-{
-	//delete(*ptr_plane);
-	delete(plane);
-}
-
-Board::Board(int _board_size, int _start_cursorx, int _start_cursor_y): board_size(_board_size), start_cursor_x(_start_cursorx), start_cursor_y(_start_cursor_y)
-{
-	plane = (char*)(board_size * board_size * sizeof(char));
-	//ptr_plane = &plane;
-}
-
-Board::Board() : board_size(0), start_cursor_x(0), start_cursor_y(0) {};

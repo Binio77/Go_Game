@@ -7,10 +7,10 @@ public:
 
 	Board(int, int, int);
 	Board();
+	virtual ~Board();
 	void Draw(int, int, int);
 	void FillBoard();
 	void DisplayBoard();
-	void Delete();
 	void ChangeSize();
 
 };

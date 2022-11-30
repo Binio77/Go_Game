@@ -1,55 +1,63 @@
-#define _CRT_SECURE_NO_WARNINGS
+#include"board_size.h"
+#include"mystring.h"
+#include"conio2.h"
 #include<stdio.h>
 #include<stdlib.h>
-#include"conio2.h"
 #include<cstdbool>;
-#include"board_size.h"
 
-int ChooseBoardSize() {
+
+int ChooseBoardSize(int _legend_x, int _legend_y) {
 	textbackground(YELLOW);
 	textcolor(BLACK);
-	gotoxy(2, 7);
-	cputs("board size 9x9 press 1");
-	gotoxy(2, 8);
-	cputs("board size 13x13 press 2");
-	gotoxy(2, 9);
-	cputs("board size 19x19 press 3");
-	gotoxy(2, 10);
-	cputs("board size of your choice press 4");
-	gotoxy(2, 11);
+	gotoxy(_legend_x, _legend_y++);
+	cputs("board size 9x9 press 2");
+	gotoxy(_legend_x, _legend_y++);
+	cputs("board size 13x13 press 3");
+	gotoxy(_legend_x, _legend_y++);
+	cputs("board size 19x19 press 4");
+	gotoxy(_legend_x, _legend_y++);
+	cputs("board size of your choice press 5");
+	gotoxy(_legend_x, _legend_y++);
 
 	char choice_of_board_size = getch();
 	switch (choice_of_board_size)
 	{
-	case '1':
+	case '2':
 	{
 		return 9;
 	}
-	case '2':
+	case '3':
 	{
 		return 13;
 	}
-	case '3':
+	case '4':
 	{
 		return 19;
 	}
-	case '4':
+	case '5':
 	{
 		gotoxy(2, 12);
+		gotoxy(_legend_x, _legend_y++);
 		cputs("choose write your own size ");
-		char current_char_number;
+		char current_char_digit;
+		MyString number_string;
 		int sum = 0;
-		int i = 1;
-
+		int multiplier = 1;
+		gotoxy(_legend_x, _legend_y++);
 		do {
-			current_char_number = getche();
-			if (current_char_number >= '1' && current_char_number <= '9')
+			current_char_digit = getche();
+			if (current_char_digit >= '1' && current_char_digit <= '9')
 			{
-
-
+				number_string.AddLetter(current_char_digit);
 			}
-		} while (current_char_number >= '1' && current_char_number <= '9');
-
+		} while (current_char_digit >= '1' && current_char_digit <= '9');
+		
+		for (int i = number_string.my_string_size - 1; i >= 0; i--)
+		{
+			sum += (*(number_string.mystring + i) - '0') * multiplier;
+			multiplier *= 10;
+		}
+		
 		return sum;
 	}
 	default:
