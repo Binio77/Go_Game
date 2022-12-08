@@ -3,12 +3,12 @@
 #include"conio2.h"
 #include<stdio.h>
 #include<stdlib.h>
-#include<cstdbool>;
+#include<cstdbool>
 
 
-int ChooseBoardSize(int _legend_x, int _legend_y) {
-	textbackground(YELLOW);
-	textcolor(BLACK);
+int ChooseBoardSize(int _legend_x, int _legend_y) 
+{
+
 	gotoxy(_legend_x, _legend_y++);
 	cputs("board size 9x9 press 2");
 	gotoxy(_legend_x, _legend_y++);
@@ -51,7 +51,7 @@ int ChooseBoardSize(int _legend_x, int _legend_y) {
 				number_string.AddLetter(current_char_digit);
 			}
 		} while (current_char_digit >= '0' && current_char_digit <= '9');
-		
+
 		for (int i = number_string.my_string_size - 1; i >= 0; i--)
 		{
 			sum += (*(number_string.mystring + i) - '0') * multiplier;
@@ -66,4 +66,37 @@ int ChooseBoardSize(int _legend_x, int _legend_y) {
 	}
 	}
 	return 0;
+}
+
+bool Handicap(int _legend_x, int _legend_y)
+{
+	_legend_y += 4;
+	gotoxy(_legend_x, _legend_y);
+	cputs("Press h to start a game with handicap");
+	char decision;
+	decision = getch();
+	if (decision == 'H' || decision == 'h' )
+		return true;
+
+	return false;
+}
+
+bool ActionConfirm(int _legend_x_loc, int _legend_y_loc)
+{
+	gotoxy(_legend_x_loc, _legend_y_loc);
+	cputs("press enter to confirm");
+	gotoxy(_legend_x_loc, ++_legend_y_loc);
+	cputs("press ESC to cancel");
+	char confirm = '0';
+	while (confirm != '\r' || confirm != 28)
+	{
+		confirm = getch();
+		if (confirm == '\r')
+			return true;
+
+		if (confirm == 27)
+			return false;
+	}
+	gotoxy(_legend_x_loc, ++_legend_y_loc);
+
 }

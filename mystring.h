@@ -12,8 +12,12 @@ public:
 	void AddLetter(char);
 	void Display();
 	void Assignment(MyString);
+	
+	
+	
 };
-
-void ReverseMyString(MyString);
+void InttoString(MyString *, int);
+void ReverseMyString(MyString *);
+void DoubletoString(MyString*, double);
 
 #endif
