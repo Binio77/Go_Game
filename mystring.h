@@ -11,13 +11,6 @@ public:
 	void AddElements(char*);
 	void AddLetter(char);
 	void Display();
-	void Assignment(MyString);
-	
-	
-	
 };
-void InttoString(MyString *, int);
-void ReverseMyString(MyString *);
-void DoubletoString(MyString*, double);
 
 #endif
